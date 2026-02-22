@@ -19,7 +19,7 @@ jobs:
           distribution: 'temurin'
 
       - name: 🔧 Grant gradlew permission
-        run: chmod +x gradlew
+        run: find . -name "gradlew" -exec chmod +x {} +
 
       - name: 🏗️ Build APK
         run: ./gradlew assembleDebug --stacktrace
