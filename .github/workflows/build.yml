@@ -20,9 +20,13 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
+      # هنا عطلنا ميزة الـ Cache تماماً لنتفادى عطل سيرفرات GitHub
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v3
+        with:
+          cache-disabled: true
 
+      # سنضيف أوامر تفعيل AndroidX هنا مباشرة للتأكد من حل المشكلة السابقة
       - name: Build APK
         run: gradle assembleDebug -Pandroid.useAndroidX=true -Pandroid.enableJetifier=true
 
